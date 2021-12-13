@@ -1,15 +1,6 @@
-@extends('base')
+@extends('layouts.app')
 
-@section('main')
-
-
-<div class="topnav">
-  <div >
-  	<a style="margin: 5px;" href="/" class="btn btn-info">Home</a>
-	  <a style="margin: 5px;" href="/products" class="btn btn-info">Products</a>
-  	<a style="margin: 5px;" href="/recipes" class="btn btn-info active">Recipes</a>
-  </div>   
-</div>
+@section('content')
 
 
 <div class="row">
@@ -28,7 +19,7 @@
 			<br/>
    		@endif
 
-		<form id=theForm method="post" action="{{ route('recipes.store') }}">
+		<form id=theForm method="GET" action="{{ route('recipes.store') }}">
 	        @csrf
 
 

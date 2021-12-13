@@ -93,10 +93,10 @@
                             @endif
                         @else
                             <li class="nav-item ms-lg-1">
-                                <a class="nav-link" href="{{ url('/') }}"> {{ 'Products' }} </a>
+                                <a class="nav-link" href="{{ url('/products') }}"> {{ 'Products' }} </a>
                             </li>
                             <li class="nav-item ms-lg-1">
-                                <a class="nav-link" href="{{ url('/') }}"> {{ 'Recipes' }} </a>
+                                <a class="nav-link" href="{{ url('/recipes') }}"> {{ 'Recipes' }} </a>
                             </li>
                         @endguest
                     </ul>

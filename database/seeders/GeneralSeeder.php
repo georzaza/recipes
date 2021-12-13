@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class FileSeeder extends Seeder
+class GeneralSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -13,8 +13,6 @@ class FileSeeder extends Seeder
      */
     public function run()
     {
-        $path = "database-seeder.sql";
-        $sql = file_get_contents($path);
-        \DB::unprepared($sql);
+        \DB::unprepared(file_get_contents('database-seeder.sql'));
     }
 }

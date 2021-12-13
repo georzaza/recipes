@@ -1,14 +1,6 @@
-@extends('base')
+@extends('layouts.app')
 
-@section('main')
-
-<div class="topnav">
-  <div >
-  	<a style="margin: 5px;" href="/" class="btn btn-info">Home</a>
-	  <a style="margin: 5px;" href="/products" class="btn btn-info active">Products</a>
-  	<a style="margin: 5px;" href="/recipes" class="btn btn-info">Recipes</a>
-  </div>   
-</div>
+@section('content')
 
 <div class="row">
 	<div class="col-sm-4 col-md-offset-4">

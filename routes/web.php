@@ -19,4 +19,61 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::get('/home', function () {
+    return redirect('/dashboard');
+});
+
+
+/** PRODUCTS **/
+Route::get('/products', 'App\Http\Controllers\ProductController@index')
+    ->name('products');
+
+Route::get('/products/create/', 'App\Http\Controllers\ProductController@create')
+    ->name('products.create');
+
+Route::get('/products/edit/', 'App\Http\Controllers\ProductController@edit')
+    ->name('products.edit');
+
+Route::get('/products/destroy', 'App\Http\Controllers\ProductController@destroy')
+    ->name('products.destroy');
+
+
+/** RECIPES **/
+Route::get('/recipes', 
+    'App\Http\Controllers\RecipeController@index')
+    ->name('recipes');
+
+Route::get('/recipes/create', 
+    'App\Http\Controllers\RecipeController@create')
+    ->name('recipes.create');
+
+Route::get('/recipes/show/{id}', 
+    'App\Http\Controllers\RecipeController@show')
+    ->name('recipes.show');
+
+Route::get('/recipes/edit/{id}', 
+    'App\Http\Controllers\RecipeController@edit')
+    ->name('recipes.edit');
+
+Route::delete('/recipes/destroy/{id}', 
+    'App\Http\Controllers\RecipeController@destroy')
+    ->name('recipes.destroy');
+
+Route::get('/recipes/store', 
+    'App\Http\Controllers\RecipeController@store')
+    ->name('recipes.store');
+
+Route::get('/recipes/update/{id}', 
+    'App\Http\Controllers\RecipeController@update')
+    ->name('recipes.update');
+
+
+
+/** other **/
+Route::get('questions', function () {
+        return view('Questions.first');
+    }); 
+
+Route::resource('available-recipes-with', 
+    'App\Http\Controllers\QuestionController');

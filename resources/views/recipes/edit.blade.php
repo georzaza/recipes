@@ -1,16 +1,6 @@
-@extends('base')
+@extends('layouts.app')
 
-@section('main')
-
-
-<div class="topnav">
-  <div >
-  	<a style="margin: 5px;" href="/" class="btn btn-info">Home</a>
-	  <a style="margin: 5px;" href="/products" class="btn btn-info">Products</a>
-  	<a style="margin: 5px;" href="/recipes" class="btn btn-info active">Recipes</a>
-  </div>   
-</div>
-
+@section('content')
 
 <div class="row">
   	<div class="col-sm-5 col-md-offset-2">
@@ -28,8 +18,7 @@
 			<br/>
     	@endif
 
-		<form id=theForm method="post" action="{{ route('recipes.update', $recipe->recipe_id) }}">
-			@method('PATCH')
+		<form id=theForm method="get" action="{{ route('recipes.update', $recipe->recipe_id) }}">
 			@csrf
 
 			<div class="form-group" style=" margin-bottom:6%;">
@@ -140,7 +129,7 @@
 		// lastly, reduce the counter by 1 since we just deleted a row.
 		counter--;
 	}
-
 </script>
+
 
 @endsection
