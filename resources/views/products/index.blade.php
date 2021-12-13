@@ -2,15 +2,17 @@
 
 @section('content')
 
-
-<div class="col-sm-12">
-	<br>
-	@if(session()->get('success'))
-	<div class="alert alert-success">
-		{{ session()->get('success') }} 
+<!-- Errors or short msgs from server are showed here -->
+<div class="d-flex justify-content-center">
+	<div class="row col-md-2 mb-4 text-center">
+		@if(session()->get('success'))
+		<div class="alert alert-success">
+			{{ session()->get('success') }} 
+		</div>
+		@endif
 	</div>
-	@endif
 </div>
+
 
 <div class="row d-flex justify-content-center">
 	<div class="col-sm-10">
@@ -18,16 +20,22 @@
 			<a style="width: auto; margin-left:40%; " href="{{ route('products.create')}}" class="btn btn-success">Add New Product</a>  	
 		</div>
 
-		<input style="border: 1px solid blue; color: purple; font-size: 13px; border-radius:20px; text-align: center;" type="text" size="30" id="search_box" onkeyup="search_box()" placeholder="Search for product or details..">
+		<!-- Search -->
+		<div class="d-flex justify-content-between mt-4 mb-1 text-center">
+			
+			<!-- Search Products -->
+			<input type="text" id="search_box" onkeyup="search_box()" placeholder="Search products or details... ">
 
-		<form action="{{ route('available-recipes-with.store') }}" method="get">
-			<div class="form-group">
-				<label for="ingredient" style="color: purple; font-size:15px; text-align: right;" >Search for recipes with: </label>
-				<input type="text" size="20" id="ingredient" name="ingredient" placeholder="Type an ingredient" style="text-align: center; font-size: 15px; vertical-align:middle; border: 1px solid purple; border-radius:20px;">
-				<button type="submit" class="btn btn-info" style="color: purple; margin-bottom: 1px; border-radius:10px; vertical-align:middle;">Search</button>
-			</div>
-		</form>
-		
+			<!-- Search Recipes For Some Product-->
+			<form action="{{ route('available-recipes-with.store') }}" method="get">
+				<div class="form-group d-flex justify-content-center">
+					<input type="text" id="ingredient" name="ingredient" placeholder="Find Recipes With..." style="height: 35px;">
+					<button type="submit" class="btn btn-success">Search</button>
+				</div>
+			</form>
+		</div>
+
+		<!-- Main Content -->
 		<div class="table-responsive">
 			<table class="table table-striped table-hover text-center table-bordered" id="products_table" >
 				<thead class="thead-dark">
@@ -44,22 +52,19 @@
 				</thead>
 				<tbody id="products">
 
-					@foreach($products as $item)
+					@foreach($products as $product)
 					<tr>
-						<td>{{$item->product_name}}</td>
-						<td>{{$item->exp_date }}</td>
-						<td>{{$item->qty }}</td>
-						<td>{{$item->weight }}</td>
-						<td>{{$item->details }}</td>
+						<td>{{$product->product_name}}</td>
+						<td>{{$product->exp_date }}</td>
+						<td>{{$product->qty }}</td>
+						<td>{{$product->weight }}</td>
+						<td>{{$product->details }}</td>
 						<td>
-							<a href="{{ route('products.edit',$item->product_id)}}" class="btn btn-primary">Edit</a>
+							<a href="{{ route('products.edit',$product->product_id)}}" class="btn btn-primary">Edit</a>
 						</td>
 						<td>
-							<form action="{{ route('products.destroy', $item->product_id)}}" method="post">
-								@csrf
-								@method('DELETE')
-								<button class="btn btn-danger" type="submit">Delete</button>
-							</form>
+							<a href="{{ route('products.destroy', $product->product_id)}}" method="get">
+								<button class="btn btn-danger">Delete</button></a>
 						</td>
 					</tr>
 					@endforeach

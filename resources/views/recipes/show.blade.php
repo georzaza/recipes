@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="row">	
+<div class="row d-flex justify-content-center">	
 	<div class="col-sm-8">
 		<br>
 		<br>
@@ -12,11 +12,6 @@
 		</div>
 		<div>
 			<h4 style="margin-top: 70px; text-align: center; color: purple;"><b>Ingredients:</b></h4>
-		</div>
-		<div>
-			<h4 style="margin-top: 70px; text-align: center; color: purple;"><b>Execution</b></h4>
-		</div>
-		<div>
 			<ul class="list-group">
 				@foreach ($ingredients as $ingredient)
 					<li style="text-align: center; margin-bottom: 5px;" class="list-group-item">
@@ -25,8 +20,8 @@
 				@endforeach
 			</ul>
 		</div>
-		
 		<div>
+			<h4 style="margin-top: 70px; text-align: center; color: purple;"><b>Execution</b></h4>
 			<ul class=list-group>
 			<li style="text-align: center; margin-bottom: 45px;" class=list-group-item>{{ $recipe->execution }}</li>
 			</ul>

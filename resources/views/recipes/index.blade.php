@@ -2,13 +2,15 @@
 
 @section('content')
 
-<div class="col-sm-12">
-	<br>
-	@if(session()->get('success'))
-	<div class="alert alert-success">
-		{{ session()->get('success') }} 
+<!-- Errors or short msgs from server are showed here -->
+<div class="d-flex justify-content-center">
+	<div class="row col-md-2 mb-4 text-center">
+		@if(session()->get('success'))
+		<div class="alert alert-success">
+			{{ session()->get('success') }} 
+		</div>
+		@endif
 	</div>
-	@endif
 </div>
 
 
@@ -53,10 +55,7 @@
 							<a href="{{ route('recipes.edit',$recipe->recipe_id)}}" style="text-align: center;" class="btn btn-primary">Edit</a>
 						</td>
 						<td>
-							<form action="{{ route('recipes.destroy', $recipe->recipe_id)}}" method="post">
-								@csrf
-								@method('DELETE')
-								<button class="btn btn-danger" type="submit" style="text-align: center;">Delete</button>
+							<a href="{{ route('recipes.destroy', $recipe->recipe_id) }}" class="btn btn-danger" style="text-align: center;">Delete</a>
 							</form>
 						</td>
 					</tr>

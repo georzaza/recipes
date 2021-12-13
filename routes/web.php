@@ -26,16 +26,32 @@ Route::get('/home', function () {
 
 
 /** PRODUCTS **/
-Route::get('/products', 'App\Http\Controllers\ProductController@index')
+Route::get('/products', 
+    'App\Http\Controllers\ProductController@index')
     ->name('products');
 
-Route::get('/products/create/', 'App\Http\Controllers\ProductController@create')
+Route::get('/products/create/', 
+    'App\Http\Controllers\ProductController@create')
     ->name('products.create');
 
-Route::get('/products/edit/', 'App\Http\Controllers\ProductController@edit')
+Route::get('/products/store', 
+    'App\Http\Controllers\ProductController@store')
+    ->name('products.store');
+
+Route::get('/products/show/{id}', 
+    'App\Http\Controllers\ProductController@show')
+    ->name('products.show');
+
+Route::get('/products/edit/{id}', 
+    'App\Http\Controllers\ProductController@edit')
     ->name('products.edit');
 
-Route::get('/products/destroy', 'App\Http\Controllers\ProductController@destroy')
+Route::get('/products/update/{id}', 
+    'App\Http\Controllers\ProductController@update')
+    ->name('products.update');
+
+Route::get('/products/destroy/{id}', 
+    'App\Http\Controllers\ProductController@destroy')
     ->name('products.destroy');
 
 
@@ -56,10 +72,6 @@ Route::get('/recipes/edit/{id}',
     'App\Http\Controllers\RecipeController@edit')
     ->name('recipes.edit');
 
-Route::delete('/recipes/destroy/{id}', 
-    'App\Http\Controllers\RecipeController@destroy')
-    ->name('recipes.destroy');
-
 Route::get('/recipes/store', 
     'App\Http\Controllers\RecipeController@store')
     ->name('recipes.store');
@@ -68,9 +80,12 @@ Route::get('/recipes/update/{id}',
     'App\Http\Controllers\RecipeController@update')
     ->name('recipes.update');
 
+Route::get('/recipes/destroy/{id}', 
+    'App\Http\Controllers\RecipeController@destroy')
+    ->name('recipes.destroy');
 
 
-/** other **/
+/** others that need work **/
 Route::get('questions', function () {
         return view('Questions.first');
     }); 

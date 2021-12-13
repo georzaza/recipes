@@ -2,10 +2,10 @@
 
 @section('content')
 
-<div class="row">
+<div class="row d-flex justify-content-center">
   	<div class="col-sm-5 col-md-offset-2">
     	
-		<h1 class="display-3" style="text-align:center;">Update a recipe</h1>
+		<h1 style="text-align:center;">Update a recipe</h1>
     	
 		@if ($errors->any())
 	      	<div class="alert alert-danger">

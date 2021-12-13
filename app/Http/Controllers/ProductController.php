@@ -59,7 +59,7 @@ class ProductController extends Controller {
 
 
     /** Redirect to the edit form */
-    public function edit($id) {
+    public function edit(Request $r, $id) {
         $product = Product::find($id);
         return view('products.edit', ['product' => $product]);
     }

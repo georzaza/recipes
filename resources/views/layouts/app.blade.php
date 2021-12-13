@@ -34,30 +34,30 @@
 
                         <ul class="nav navbar-nav me-auto">
                             <li class="nav-item ms-lg-1">
-                                <a class="nav-link rounded-circle  {{ (Route::getCurrentRoute()->uri == '/') ? 'text-warning bg-dark' : '' }}" href="{{ url('/') }}">  {{ 'Explore' }} </a>
+                                <a class="nav-link  {{ (Route::getCurrentRoute()->uri == '/') ? 'text-warning bg-dark' : '' }}" href="{{ url('/') }}">  {{ 'Explore' }} </a>
                             </li>
                             <li class="nav-item ms-lg-1">
-                                <a class="nav-link rounded-circle  {{(Route::getCurrentRoute()->uri == 'dashboard') ? 'text-warning bg-dark' : '' }}" href="{{ url('/dashboard') }}"> {{ 'Dashboard' }} </a>
+                                <a class="nav-link  {{(Route::getCurrentRoute()->uri == 'dashboard') ? 'text-warning bg-dark' : '' }}" href="{{ url('/dashboard') }}"> {{ 'Dashboard' }} </a>
                             </li>
 
                             <!-- Authentication Links -->
                             @guest
                             @if (Route::has('login'))
                             <li class="nav-item ms-lg-1">
-                                <a class="nav-link rounded-circle {{(Route::getCurrentRoute()->uri == 'login') ? 'text-warning bg-dark' : '' }}"  href="{{ route('login') }}"> {{ __('Login') }} </a>
+                                <a class="nav-link {{(Route::getCurrentRoute()->uri == 'login') ? 'text-warning bg-dark' : '' }}"  href="{{ route('login') }}"> {{ __('Login') }} </a>
                             </li>
                             @endif
                             @if (Route::has('register'))
                             <li class="nav-item ms-lg-1">
-                                <a class="nav-link rounded-circle {{(Route::getCurrentRoute()->uri == 'register') ? 'text-warning bg-dark' : '' }}" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link {{(Route::getCurrentRoute()->uri == 'register') ? 'text-warning bg-dark' : '' }}" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                             @endif
                             @else
                             <li class="nav-item ms-lg-1">
-                                <a class="nav-link rounded-circle {{(Route::getCurrentRoute()->uri == 'products') ? 'text-warning bg-dark' : '' }}" href="{{ url('/products') }}"> {{ 'Products' }} </a>
+                                <a class="nav-link  {{(Route::getCurrentRoute()->uri == 'products') ? 'text-warning bg-dark' : '' }}" href="{{ url('/products') }}"> {{ 'Products' }} </a>
                             </li>
                             <li class="nav-item ms-lg-1">
-                                <a class="nav-link rounded-circle {{(Route::getCurrentRoute()->uri == 'recipes') ? 'text-warning bg-dark' : '' }}" href="{{ url('/recipes') }}"> {{ 'Recipes' }} </a>
+                                <a class="nav-link {{(Route::getCurrentRoute()->uri == 'recipes') ? 'text-warning bg-dark' : '' }}" href="{{ url('/recipes') }}"> {{ 'Recipes' }} </a>
                             </li>
                             @endguest
                         </ul>

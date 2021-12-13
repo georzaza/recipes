@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row">
+<div class="row d-flex justify-content-center">
 	<div class="col-sm-4 col-md-offset-4">
     	<h1 class="display-3" style="text-align:center;">Add a product</h1>
   	
