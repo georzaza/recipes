@@ -25,12 +25,10 @@
 	            <label for="recipe_name">Recipe Name:(eg. Spaghetti Marinara)</label><br>
            		<input type="text" class="form-control" name="recipe_name" value="{{$recipe->recipe_name}}"/>
 			</div>
-			
+
 			<div class="form-group">
 	            <label for="execution">Execution Instructions:</label>
-				<textarea form="theForm" class="form-group" name="execution" style="width:100%; height:85px; margin-bottom: 0%;">
-					{{$recipe->execution}}
-				</textarea>
+				<textarea form="theForm" class="form-group" name="execution" style="width:100%; height:85px; margin-bottom: 0%;">{{$recipe->execution}}</textarea>
 			</div><br>
 
 			<div class="form-group" id="formIngredients">
@@ -66,19 +64,19 @@
 	relative to the ingredients. 
 -->
 <script>
-	
+
 	// represents the rows already present.
 	let counter = (document.getElementsByTagName("input").length-3) / 2;
-	
+
 	// Gets called when the user hits the '+' button.
 	// The function injects a new input line for the ingredients. (ingredient & qty & button '-')
 	function addIngredient() {
 
 		let ingredientFormdiv = document.getElementById("formIngredients");
-		let theButton = document.getElementById("minus-button-".concat((counter-1).toString()));		
+		let theButton = document.getElementById("minus-button-".concat((counter-1).toString()));
 		let ingredient_input_name = "recipeIngredients".concat(counter.toString());
 		let ingredient_qty_name = "recipeIngredientQty".concat(counter.toString());
-		
+
 		let HTMLcode = '<input type="text" class="form-control" style="width:290px; display:inline-block; margin-right:18px; margin-bottom: 10px;" ';
 		HTMLcode +=	'name="'.concat(ingredient_input_name).concat('" required>');
 
@@ -98,9 +96,9 @@
 		IF you do, make sure that you follow the naming convention we have for the ingredients/qty.
 		We didnt care for a faster/better way, since the ingredients cant be so many to need faster algo. */
 	function removeUnusedIngredient(id)	{
-		
+
 		let ingredientFormdiv = document.getElementById("formIngredients");
-		let inputs = ingredientFormdiv.getElementsByClassName("form-control");		
+		let inputs = ingredientFormdiv.getElementsByClassName("form-control");
 		let real_id = (id.split('-'))[2];
 		let position = -1;
 
@@ -119,7 +117,7 @@
 			inputs[i].setAttribute("name", "recipeIngredients".concat((i/2).toString()));
 			inputs[i+1].setAttribute("name", "recipeIngredientQty".concat(Math.floor(((i+1)/2)).toString()));
 		}
-		
+
 		// get the buttons, then rename every remaining one appropriately as well.
 		let buttons = ingredientFormdiv.getElementsByTagName("button");
 		for (let i=0; i<buttons.length; i++)	{
