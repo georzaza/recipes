@@ -15,6 +15,11 @@ class RecipeController extends Controller {
     }
    
     public function index() {
+        // we need to change that, the first query already
+        // contains the recipes...
+        // changing this means we need to change the recipes.index
+        // view that MAY be using the $recipes or the $items variables
+        // that we pass to it.
         $items = DB::table('recipes')
                     ->join('ingredients', 'recipes.recipe_id', '=', 'ingredients.recipe')
                     ->select('recipe_name', 'execution', 'ingredient_name', 'qty', 'recipe')
@@ -22,7 +27,7 @@ class RecipeController extends Controller {
         $recipes = DB::table('recipes')
                     ->orderBy('recipe_name')
                     ->get();
-        dd($recipes);
+        //dd($items);
         return view('recipes.index', ['items' => $items, 'recipes' => $recipes]);
     }
 
