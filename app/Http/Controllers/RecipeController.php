@@ -22,6 +22,7 @@ class RecipeController extends Controller {
         $recipes = DB::table('recipes')
                     ->orderBy('recipe_name')
                     ->get();
+        dd($recipes);
         return view('recipes.index', ['items' => $items, 'recipes' => $recipes]);
     }
 
