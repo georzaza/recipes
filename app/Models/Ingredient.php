@@ -20,7 +20,7 @@ class Ingredient extends Model
     protected $guarded = ['ingredient_id'];
     protected $fillable = [
         'ingredient_name', 
-        'recipe', 
         'qty',
+        'recipe',
     ];
 }

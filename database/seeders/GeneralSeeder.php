@@ -13,6 +13,6 @@ class GeneralSeeder extends Seeder
      */
     public function run()
     {
-        \DB::unprepared(file_get_contents('database-seeder.sql'));
+        \DB::unprepared(file_get_contents('data.sql'));
     }
 }
