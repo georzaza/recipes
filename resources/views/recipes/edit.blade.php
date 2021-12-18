@@ -17,8 +17,9 @@
 			</div>
 			<br/>
     	@endif
-
-		<form id=theForm method="get" action="{{ route('recipes.update', $recipe->recipe_id) }}">
+    	
+		<form id=theForm method="get" 
+				action="{{ route('recipes.update', ['id' => $recipe->id]) }}">
 			@csrf
 
 			<div class="form-group" style=" margin-bottom:6%;">
@@ -92,19 +93,19 @@
 
 	/** Gets called when the user hits the '-' button.
 	 	The function removes an input line from the ingredients. (ingredient & qty & button '-')
-		DO NOT mess with this function as it will destroy the functionality of the edit page.
-		IF you do, make sure that you follow the naming convention we have for the ingredients/qty.
-		We didnt care for a faster/better way, since the ingredients cant be so many to need faster algo. */
+	 	todo has a problem. The way it works is the upper '-' button removes 
+	 	the item from the next row.
+	 */
 	function removeUnusedIngredient(id)	{
 
-		let ingredientFormdiv = document.getElementById("formIngredients");
-		let inputs = ingredientFormdiv.getElementsByClassName("form-control");
-		let real_id = (id.split('-'))[2];
-		let position = -1;
+		var ingredientFormdiv = document.getElementById("formIngredients");
+		var inputs = ingredientFormdiv.getElementsByClassName("form-control");
+		var real_id = (id.split('-'))[2];
+		var position = -1;
 
 		// remove the ingredient and qty input fields, then delete the button as well
-		for (let i=0; i<inputs.length; i++)	{
-  			if (inputs[i].name == "recipeIngredients".concat( real_id ))	{
+		for (var i=0; i<inputs.length; i++)	{
+  			if (inputs[i].name == "recipeIngredients".concat(real_id))	{
 				ingredientFormdiv.removeChild(inputs[i]);
 				ingredientFormdiv.removeChild(inputs[i++]);
 				position = i;

@@ -19,8 +19,7 @@
         	<br/>
         @endif
 
-		<form method="post" action="{{ route('products.update', $product->product_id) }}">
-            @method('PATCH')
+		<form method="get" action="{{ route('products.update', $product->id) }}">
             @csrf
 
 			<div class="form-group"	>    

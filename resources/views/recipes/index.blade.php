@@ -24,7 +24,9 @@
 		style="border: 1px solid blue; color: purple; font-size: 13px; border-radius:20px; text-align: center;">
 
 		<div class="table-responsive">
+			
 			<table class="table table-striped table-hover text-center table-bordered" id="recipes_table">
+				
 				<thead class="text-center" >
 					<th class="text-center" scope="col">
 						<b>Name</b>
@@ -34,28 +36,30 @@
 					<th class="text-center" scope="col">Ingredients</th>
 					<th scope="col" colspan="2" style="text-align:center;"></th>
 				</thead>
+
+
 				<tbody id="recipes" class="text-center">
 					@foreach($recipes as $recipe)
 					<tr class="text-center">
 						<td class="text-center">
-							<a style="text-align: center;" href="{{ route('recipes.show',$recipe->recipe_id)}}">{{$recipe->recipe_name }}</a>
+							<a style="text-align: center;" href="{{ route('recipes.show',$recipe->id)}}">{{$recipe->recipe_name }}</a>
 						</td>
 						<td>
 							<input class="iButton" type="button" value="See Ingredients" style="{display:block;}">
 							<div class="container" style="display:none;width:200px;height: auto;">
-								@foreach($items as $item)
+								@foreach($ingredients as $ingredient)
 								<?php 
-								if ($item->recipe == $recipe->recipe_id)
-									echo '<li style="color: purple;">'.$item->qty.' '.$item->ingredient_name.'</li>';
+								if ($ingredient->recipe_id == $recipe->id)
+									echo '<li style="color: purple;">'.$ingredient->qty.' '.$ingredient->ingredient_name.'</li>';
 								?>
 								@endforeach	
-							</div>							
+							</div>
 						</td>
 						<td>
-							<a href="{{ route('recipes.edit',$recipe->recipe_id)}}" style="text-align: center;" class="btn btn-primary">Edit</a>
+							<a href="{{ route('recipes.edit',$recipe->id)}}" style="text-align: center;" class="btn btn-primary">Edit</a>
 						</td>
 						<td>
-							<a href="{{ route('recipes.destroy', $recipe->recipe_id) }}" class="btn btn-danger" style="text-align: center;">Delete</a>
+							<a href="{{ route('recipes.destroy', $recipe->id) }}" class="btn btn-danger" style="text-align: center;">Delete</a>
 							</form>
 						</td>
 					</tr>

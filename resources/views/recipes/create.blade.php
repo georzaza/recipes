@@ -23,40 +23,85 @@
 	        @csrf
 
 
-       		<div class="form-group" style=" margin-bottom:6%;">
-	            <label for="recipe_name">Recipe Name:(eg. Spaghetti Marinara)</label><br>
-           		<input type="text" class="form-control" name="recipe_name"/>
+       		<div
+       			class="form-group" 
+       			style=" margin-bottom:6%;">
+	            <label for="recipe_name">
+	            	Recipe Name:(eg. Spaghetti Marinara)
+	            </label>
+	            <br>
+           		<input type="text"class="form-control"name="recipe_name"/>
 			</div>
 
 			<div class="form-group">
-	            <label for="execution">Execution Instructions:</label><br>
-				<textarea wrap="soft" form="theForm" class="form-group" name="execution" style="width:100%; height:85px; margin-bottom: 0%;"></textarea>
-			</div><br>
+	            <label for="execution">Execution Instructions:</label>
+	            <br>
+				<textarea 
+					class="form-group" 
+					name="execution"
+					wrap="soft" 
+					form="theForm"
+					style="width:100%; height:85px; margin-bottom: 0%;"></textarea>
+			</div>
+			<br>
 
       		<div class="form-group" id="formIngredients">
-			  	<label for="recipeIngredients0" style="width:290px; display:inline-block; ">Ingredients</label>
-      			<label for="recipeIngredientQty0" style="width:120px; display:inline-block; text-align: center;">Quantity (in kg/L)</label>
+			  	
+			  	<label 
+			  		for="recipeIngredients0" 
+			  		style="width:290px; display:inline-block; ">
+			  		Ingredients
+			  	</label>
+      			
+      			<label 
+      				for="recipeIngredientQty0" 
+      				style="width:120px; display:inline-block; text-align: center;">
+      				Quantity (in kg/L)
+      			</label>
 
-				<input 	type="text" class="form-control" name="recipeIngredients0" 
-						style="width:290px; display:inline-block; margin-right: 15px; margin-bottom: 10px;" required>
+				<input 
+					class="form-control" 
+					name="recipeIngredients0" 
+					type="text"
+					style="width:290px; display:inline-block; 
+					margin-right: 15px; margin-bottom: 10px;" 
+					required>
 
-				<input 	type="number" step="0.001" min="0" class="form-control" name="recipeIngredientQty0"
-						style="width:80px; display:inline-block; margin-right: 15px; margin-bottom: 10px;" required>
+				<input 
+					class="form-control" 
+					name="recipeIngredientQty0"
+					type="number"
+					step="0.001"
+					min="0" 
+					style="width:80px; display:inline-block; margin-right: 15px;
+					margin-bottom: 10px;"
+					required>
 
-				<button id="minus-button-0" type="button" 
-						class="btn btn-danger" style="display: inline-block; margin-y: 10px;" 
-						onclick="removeUnusedIngredient(this.id)" >-
+				<button
+					id="minus-button-0"
+					class="btn btn-danger"
+					onclick="removeUnusedIngredient(this.id)"
+					type="button" 
+					style="display: inline-block; margin-y: 10px;" 
+					 >-
 				</button>
       		</div>
-			<button id="plus-button" type="button" style="display: inline-block; " class="btn btn-primary"  onclick="addIngredient()">+</button>
+			<button 
+				id="plus-button"
+				class="btn btn-primary"
+				onclick="addIngredient()"
+				type="button" 
+				style="display: inline-block; ">+</button>
       		<br>
 
 			<div class="form-group" >
-       			<button type="submit" class="btn btn-success" style="margin-left:37%; width: auto; margin-top: 15px;">
+       			<button 
+       				type="submit" 
+       				class="btn btn-success" 
+       				style="margin-left:37%; width: auto; margin-top: 15px;">
 		  			Add Recipe
 				</button>
 			</div>
-
    		</form>
 	</div>
 </div>
@@ -98,26 +143,20 @@
 	}
 
 	/** Gets called when the user hits the '-' button.
-	 	The function removes an input line from the ingredients. (ingredient & qty & button '-')
-		DO NOT mess with this function as it will destroy the functionality of the edit page.
-		IF you do, make sure that you follow the naming convention we have for the ingredients/qty.
-		We didnt care for a faster/better way, since the ingredients cant be so many to need faster algo. */
-		function removeUnusedIngredient(id)	{
+	 	The function removes an input line.
+	 */
+	function removeUnusedIngredient(id)	{
+		
+		// caller = Button '-'
+		caller = document.getElementById(id);
 
-		let ingredientFormdiv = document.getElementById("formIngredients");
-		let inputs = ingredientFormdiv.getElementsByClassName("form-control");
-		let real_id = (id.split('-'))[2];
-		let position = -1;
+		// delete caller button and it's corresponding ingredients.
+		caller.previousElementSibling.previousElementSibling.remove();
+		caller.previousElementSibling.remove();
+		caller.remove();
 
-		// remove the ingredient and qty input fields, then delete the button as well
-		for (let i=0; i<inputs.length; i++)	{
-  			if (inputs[i].name == "recipeIngredients".concat( real_id ))	{
-				ingredientFormdiv.removeChild(inputs[i]);
-				ingredientFormdiv.removeChild(inputs[i++]);
-				position = i;
-			}
-		}
-		ingredientFormdiv.removeChild(document.getElementById(id));
+		var temp = document.getElementById("formIngredients");
+		var inputs = temp.getElementsByClassName("form-control");
 
 		// rename every remaining input field appropriately
 		for (let i=0; i<inputs.length; i+=2)	{
@@ -126,17 +165,13 @@
 		}
 
 		// get the buttons, then rename every remaining one appropriately as well.
-		let buttons = ingredientFormdiv.getElementsByTagName("button");
+		var buttons = temp.getElementsByClassName("btn-danger");
 		for (let i=0; i<buttons.length; i++)	{
 			buttons[i].setAttribute("name", "minus-button-".concat(i.toString()))
+			buttons[i].id = "minus-button-".concat(i.toString());
 		}
-
-		// lastly, reduce the counter by 1 since we just deleted a row.
 		counter--;
 	}
 
 </script>
-
-
 @endsection
-

@@ -13,14 +13,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ingredient extends Model
 {
-    protected $primaryKey = 'ingredient_id';
+    protected $primaryKey = 'id';
     
     // guarded prevents mass-assignment on these fields.
     // Naturally, we want to protect our id from this effect
-    protected $guarded = ['ingredient_id'];
+    protected $guarded = ['id'];
     protected $fillable = [
         'ingredient_name', 
         'qty',
-        'recipe',
+        //'qty_units',
+        'recipe_id',
     ];
+
+    public function recipes() {
+        return $this->belongToMany(Recipe::cless);
+    }
 }

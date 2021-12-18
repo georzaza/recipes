@@ -7,14 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-    protected $primaryKey = 'recipe_id';
+    protected $primaryKey = 'id';
     
     // guarded prevents mass-assignment on these fields.
     // Naturally, we want to protect our id from this effect
-    protected $guarded = ['recipe_id'];
+    protected $guarded = ['id'];
     protected $fillable = [
         'recipe_name', 
         'execution', 
-        'user',
+        'user_id',
     ];
+
+    public function ingredients() {
+        return $this->hasMany(Ingredient::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

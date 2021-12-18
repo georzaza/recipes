@@ -16,11 +16,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $primaryKey = 'product_id';
+    protected $primaryKey = 'id';
     
     // guarded prevents mass-assignment on these fields.
     // Naturally, we want to protect our id from this effect
-    protected $guarded = ['product_id'];
+    protected $guarded = ['id'];
     protected $fillable = [
         'product_name', 
         'exp_date',  

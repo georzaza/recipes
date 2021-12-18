@@ -27,7 +27,7 @@
 			<input type="text" id="search_box" onkeyup="search_box()" placeholder="Search products or details... ">
 
 			<!-- Search Recipes For Some Product-->
-			<form action="{{ route('available-recipes-with.store') }}" method="get">
+			<form action="{{ route('recipes.find') }}" method="get">
 				<div class="form-group d-flex justify-content-center">
 					<input type="text" id="ingredient" name="ingredient" placeholder="Find Recipes With..." style="height: 35px;">
 					<button type="submit" class="btn btn-success">Search</button>
@@ -60,10 +60,10 @@
 						<td>{{$product->weight }}</td>
 						<td>{{$product->details }}</td>
 						<td>
-							<a href="{{ route('products.edit',$product->product_id)}}" class="btn btn-primary">Edit</a>
+							<a href="{{ route('products.edit',Str::slug($product->id))}}" class="btn btn-primary">Edit</a>
 						</td>
 						<td>
-							<a href="{{ route('products.destroy', $product->product_id)}}" method="get">
+							<a href="{{ route('products.destroy', $product->id)}}" method="get">
 								<button class="btn btn-danger">Delete</button></a>
 						</td>
 					</tr>

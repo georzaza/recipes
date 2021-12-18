@@ -84,6 +84,10 @@ Route::get('/recipes/destroy/{id}',
     'App\Http\Controllers\RecipeController@destroy')
     ->name('recipes.destroy');
 
+Route::get('/recipes/find',
+    'App\Http\Controllers\RecipeController@find')
+    ->name('recipes.find');
+
 
 /** others that need work **/
 Route::get('questions', function () {

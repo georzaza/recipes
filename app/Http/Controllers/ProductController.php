@@ -15,9 +15,7 @@ class ProductController extends Controller {
     }
 
     public function index(Request $request) {
-        $products = DB::table('products')
-                ->orderBy('exp_date')
-                ->get();
+        $products = Product::all()->sortBy('exp_date');
         return view('products.index', ['products' => $products]);
     }
 
@@ -54,7 +52,7 @@ class ProductController extends Controller {
 
     /** Display the specified resource. */
     public function show($id) {  
-        //
+        // still not needed.
     }
 
 
@@ -81,7 +79,7 @@ class ProductController extends Controller {
         $product->weight        = $request->get('weight');
         $product->details       = $request->get('details');
         $product->save();
-        return redirect('/products')->with('success', 'product updated!');
+        return redirect('/products')->with(['success'=>'product updated!']);
     }
 
 
@@ -90,6 +88,6 @@ class ProductController extends Controller {
         $product = Product::find($id);
         $product->delete();
         return redirect('/products')->with('success', 'product deleted!');
-    }   
+    }
 
 }

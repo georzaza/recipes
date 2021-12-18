@@ -31,12 +31,14 @@ class CreateIngredientsTable extends Migration
     public function up()
     {
         Schema::create('ingredients', function (Blueprint $table) {
-            $table->increments('ingredient_id');
-            $table->timestamps();
+            $table->increments('id');
             $table->string('ingredient_name');
             $table->string('qty')->nullable();
-            $table->integer('recipe')->unsigned();
-            $table->foreign('recipe')->references('recipe_id')->on('recipes')->onDelete('CASCADE');
+            //$table->string('qty_units')->nullable();
+            $table->integer('recipe_id')->unsigned();
+            // on deleting a recipe delete the ingredients too.
+            $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('CASCADE');
+            $table->timestamps();
         });
     }
 

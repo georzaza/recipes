@@ -20,12 +20,10 @@ class CreateRecipesTable extends Migration
     public function up()
     {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->increments('recipe_id');
-            $table->bigInteger('user')->unsigned();
-            $table->foreign('user')
-                ->references('id')
-                ->on('users')
-                ->onDelete('CASCADE'); // on deleting a user, delete all his recipes too.
+            $table->increments('id');
+            $table->bigInteger('user_id')->unsigned();
+            // on deleting  a user, delete all his recipes too.
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->string('recipe_name');
             $table->longText('execution');
             $table->timestamps();
