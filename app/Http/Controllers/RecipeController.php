@@ -123,10 +123,10 @@ class RecipeController extends Controller {
         $recipe = Recipe::find($id);
         $recipe->recipe_name = $request->get('recipe_name');
         $recipe->execution   = $request->get('execution');
-        $recipe->user_id = Auth::user()->id;
-        $recipe->time    = $request->get('recipe_time');
-        $recipe->diet    = $request->get('recipe_diet');
-        $recipe->type    = $request->get('recipe_type');
+        $recipe->user_id     = Auth::user()->id;
+        $recipe->recipe_time = $request->get('recipe_time');
+        $recipe->recipe_diet = $request->get('recipe_diet');
+        $recipe->recipe_type = $request->get('recipe_type');
         $recipe->save();
         
         // Delete all the ingredients the old recipe had.
@@ -180,6 +180,6 @@ class RecipeController extends Controller {
             ->distinct()
             ->get();
 
-        return redirect('/recipes', ['recipes' => $results]);//->with(['Recipes with' => $temp]);
+        return redirect('/recipes', ['recipes' => $results]);
     }
 }

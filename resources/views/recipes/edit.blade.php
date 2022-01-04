@@ -5,7 +5,7 @@
 <div class="row d-flex justify-content-center">
   	<div class="col-sm-5 col-md-offset-2">
     	
-		<h1 style="text-align:center;">Update a recipe</h1>
+		<h1 style="text-align:center;">Αλλαγή Συνταγής</h1>
     	
 		@if ($errors->any())
 	      	<div class="alert alert-danger">
@@ -18,19 +18,60 @@
 			<br/>
     	@endif
     	
-		<form id=theForm method="get" 
-				action="{{ route('recipes.update', ['id' => $recipe->id]) }}">
+		<form id=theForm method="GET" action="{{ route('recipes.update', ['id' => $recipe->id]) }}">
 			@csrf
 
 			<div class="form-group" style=" margin-bottom:6%;">
-	            <label for="recipe_name">Recipe Name:(eg. Spaghetti Marinara)</label><br>
+	            <label for="recipe_name">Όνομα συνταγής:</label><br>
            		<input type="text" class="form-control" name="recipe_name" value="{{$recipe->recipe_name}}"/>
 			</div>
 
 			<div class="form-group">
-	            <label for="execution">Execution Instructions:</label>
+	            <label for="execution">Οδηγίες Εκτέλεσης:</label>
 				<textarea form="theForm" class="form-group" name="execution" style="width:100%; height:85px; margin-bottom: 0%;">{{$recipe->execution}}</textarea>
 			</div><br>
+
+			<div class="form-group">
+				<label for="recipy_type">Είδος γεύματος</label>
+				<select name="recipe_type" id="recipe_type">
+				  <option value="Γλυκό">Γλυκό</option>
+				  <option value="Κοκτέιλ">Κοκτέιλ</option>
+				  <option value="Κυρίως Γεύμα">Κυρίως Γεύμα</option>
+				  <option value="Ορεκτικό">Ορεκτικό</option>
+				  <option value="Πρωινό">Πρωινό</option>
+				  <option value="Ροφήματα">Ροφήματα</option>
+				  <option value="Σαλάτα">Σαλάτα</option>
+				  <option value="Σνακ">Σνακ</option>
+				  <option value="Συνοδευτικά">Συνοδευτικά</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="recipe_diet">Ειδική διατροφή</label>
+				<select name="recipe_diet" id="recipe_diet">
+				  <option value="Βίγκαν">Βίγκαν</option>
+				  <option value="Χορτοφαγικά">Χορτοφαγικά</option>
+				  <option value="Χωρίς γαλακτοκομικά">Χωρίς γαλακτοκομικά</option>
+				  <option value="Χωρίς γλουτένη">Χωρίς γλουτένη</option>
+				  <option value="Χωρίς ζάχαρη">Χωρίς ζάχαρη</option>
+				</select>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label 
+			  		for="recipe_time" 
+			  		style="display:inline-block; ">
+			  		Χρόνος
+			  	</label>
+			  	<input 
+					class="form-control" 
+					name="recipe_time" 
+					type="text"
+					style="width:90px; display:inline-block;
+					margin-bottom: 10px;" 
+					required>
+			</div>
 
 			<div class="form-group" id="formIngredients">
 			  	<label for="recipeIngredients0" style="width:290px; display:inline-block; ">Ingredients</label>
@@ -48,7 +89,7 @@
 
 			<div class="form-group" >
        			<button type="submit" class="btn btn-info" style="margin-left:37%; width: auto; margin-top: 15px;">
-		  			Add Recipe
+		  			Προσθήκη Συνταγής
 				</button>
 			</div>
 

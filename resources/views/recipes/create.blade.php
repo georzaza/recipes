@@ -6,7 +6,7 @@
 <div class="row d-flex justify-content-center">
   	<div class="col-sm-5 col-md-offset-2">
     	
-		<h3 style="text-align:center;">Add New Recipe</h3>
+		<h3 style="text-align:center;">Προσθήκη Νέας Συνταγής</h3>
    		
 		@if ($errors->any())
       		<div class="alert alert-danger">
@@ -22,19 +22,18 @@
 		<form id=theForm method="GET" action="{{ route('recipes.store') }}">
 	        @csrf
 
-
        		<div
        			class="form-group" 
        			style=" margin-bottom:6%;">
 	            <label for="recipe_name">
-	            	Recipe Name:(eg. Spaghetti Marinara)
+	            	Όνομα συνταγής:
 	            </label>
 	            <br>
            		<input type="text"class="form-control"name="recipe_name"/>
 			</div>
 
 			<div class="form-group">
-	            <label for="execution">Execution Instructions:</label>
+	            <label for="execution">Οδηγίες Εκτέλεσης:</label>
 	            <br>
 				<textarea 
 					class="form-group" 
@@ -45,31 +44,29 @@
 			</div>
 			<br>
 
-
-
 			<div class="form-group">
 				<label for="recipy_type">Είδος γεύματος</label>
 				<select name="recipe_type" id="recipe_type">
-				  <option value="glyko">Γλυκό</option>
-				  <option value="kokteil">Κοκτέιλ</option>
-				  <option value="kyrios">Κυρίως Γεύμα</option>
-				  <option value="orektiko">Ορεκτικό</option>
-				  <option value="proino">Πρωινό</option>
-				  <option value="rofimata">Ροφήματα</option>
-				  <option value="salata">Σαλάτα</option>
-				  <option value="snak">Σνακ</option>
-				  <option value="synodeytika">Συνοδευτικά</option>
+				  <option value="Γλυκό">Γλυκό</option>
+				  <option value="Κοκτέιλ">Κοκτέιλ</option>
+				  <option value="Κυρίως Γεύμα">Κυρίως Γεύμα</option>
+				  <option value="Ορεκτικό">Ορεκτικό</option>
+				  <option value="Πρωινό">Πρωινό</option>
+				  <option value="Ροφήματα">Ροφήματα</option>
+				  <option value="Σαλάτα">Σαλάτα</option>
+				  <option value="Σνακ">Σνακ</option>
+				  <option value="Συνοδευτικά">Συνοδευτικά</option>
 				</select>
 			</div>
 
 			<div class="form-group">
 				<label for="recipe_diet">Ειδική διατροφή</label>
 				<select name="recipe_diet" id="recipe_diet">
-				  <option value="vegan">Βίγκαν</option>
-				  <option value="xortofagika">Χορτοφαγικά</option>
-				  <option value="non_dairy">Χωρίς γαλακτοκομικά</option>
-				  <option value="non_gluten">Χωρίς γλουτένη</option>
-				  <option value="no_sugar">Χωρίς ζάχαρη</option>
+				  <option value="Βίγκαν">Βίγκαν</option>
+				  <option value="Χορτοφαγικά">Χορτοφαγικά</option>
+				  <option value="Χωρίς γαλακτοκομικά">Χωρίς γαλακτοκομικά</option>
+				  <option value="Χωρίς γλουτένη">Χωρίς γλουτένη</option>
+				  <option value="Χωρίς ζάχαρη">Χωρίς ζάχαρη</option>
 				</select>
 			</div>
 			<br>
@@ -96,13 +93,13 @@
 			  	<label 
 			  		for="recipeIngredients0" 
 			  		style="width:290px; display:inline-block; ">
-			  		Ingredients
+			  		Συστατικά
 			  	</label>
       			
       			<label 
       				for="recipeIngredientQty0" 
       				style="width:120px; display:inline-block; text-align: center;">
-      				Quantity (in kg/L)
+      				Ποσότητα
       			</label>
 
 				<input 
@@ -145,7 +142,7 @@
        				type="submit" 
        				class="btn btn-success" 
        				style="margin-left:37%; width: auto; margin-top: 15px;">
-		  			Add Recipe
+		  			Προσθήκη Συνταγής
 				</button>
 			</div>
    		</form>
