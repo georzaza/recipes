@@ -14,20 +14,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('explore');
 });
 
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
 Route::get('/home', function () {
     return redirect('/dashboard');
 });
 
-/** others that need work **/
 Route::get('/explore', function () {
     return view('explore');
-}); 
+});
+
+Route::post('/explore',
+    'App\Http\Controllers\ExploreController@search')
+    ->name('explore.search');
+
+Route::get('/results', function () {
+    return view('results');
+});
 
 
 /** PRODUCTS **/
