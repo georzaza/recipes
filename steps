@@ -14,5 +14,3 @@ INSTEAD INSTALL COMPOSER GLOBALLY
 13 npm install && npm run dev (yes, again)
 
 14 edit .env
-
-

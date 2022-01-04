@@ -24,6 +24,11 @@ Route::get('/home', function () {
     return redirect('/dashboard');
 });
 
+/** others that need work **/
+Route::get('/explore', function () {
+    return view('explore');
+}); 
+
 
 /** PRODUCTS **/
 Route::get('/products', 

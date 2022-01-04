@@ -13,9 +13,12 @@ class Recipe extends Model
     // Naturally, we want to protect our id from this effect
     protected $guarded = ['id'];
     protected $fillable = [
-        'recipe_name', 
-        'execution', 
         'user_id',
+        'recipe_name', 
+        'recipe_time',
+        'recipe_type',
+        'recipe_diet',
+        'execution'
     ];
 
     public function ingredients() {

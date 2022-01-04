@@ -18,7 +18,7 @@ class RecipeController extends Controller {
         // get Recipes through Laravel query
         $recipes = Recipe::where('user_id', Auth::user()->id)->orderBy('recipe_name')->get();
         
-        // get all recipe ids. We'll use them to get teh ingredients.
+        // get all recipe ids. We'll use them to get the ingredients.
         $ids = [];
         foreach ($recipes as $recipe)
             array_push($ids, $recipe->id);
@@ -39,12 +39,17 @@ class RecipeController extends Controller {
         // We do this first as we need it's id for the ingredient table.
         $request->validate([
             'recipe_name'   => 'required', 
-            'execution'     => 'required'
+            'execution'     => 'required',
+            'recipe_time'   => 'required',
+            'recipe_diet'   => 'required'
         ]);
         $recipe = new Recipe([
-            'recipe_name'   => $request->get('recipe_name'), 
+            'recipe_name'   => $request->get('recipe_name'),
             'execution'     => $request->get('execution'),
             'user_id'       => Auth::user()->id,
+            'recipe_time'   => $request->get('recipe_time'),
+            'recipe_diet'   => $request->get('recipe_diet'),
+            'recipe_type'   => $request->get('recipe_type')
         ]);
         $recipe->save();
         
@@ -109,14 +114,19 @@ class RecipeController extends Controller {
     
     public function update(Request $request, $id) {
         $request->validate([
-            'recipe_name'   => 'required', 
-            'execution'     => 'required'
+            'recipe_name'   => 'required',
+            'execution'     => 'required',
+            'recipe_time'   => 'required',
+            'recipe_diet'   => 'required'
         ]);
 
         $recipe = Recipe::find($id);
         $recipe->recipe_name = $request->get('recipe_name');
         $recipe->execution   = $request->get('execution');
         $recipe->user_id = Auth::user()->id;
+        $recipe->time    = $request->get('recipe_time');
+        $recipe->diet    = $request->get('recipe_diet');
+        $recipe->type    = $request->get('recipe_type');
         $recipe->save();
         
         // Delete all the ingredients the old recipe had.
@@ -145,7 +155,6 @@ class RecipeController extends Controller {
             $ingredient->save();
             $counter++;
         }
-
         return redirect('/recipes')->with('success', 'recipe updated!');
     }
 

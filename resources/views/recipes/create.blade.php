@@ -45,6 +45,52 @@
 			</div>
 			<br>
 
+
+
+			<div class="form-group">
+				<label for="recipy_type">Είδος γεύματος</label>
+				<select name="recipe_type" id="recipe_type">
+				  <option value="glyko">Γλυκό</option>
+				  <option value="kokteil">Κοκτέιλ</option>
+				  <option value="kyrios">Κυρίως Γεύμα</option>
+				  <option value="orektiko">Ορεκτικό</option>
+				  <option value="proino">Πρωινό</option>
+				  <option value="rofimata">Ροφήματα</option>
+				  <option value="salata">Σαλάτα</option>
+				  <option value="snak">Σνακ</option>
+				  <option value="synodeytika">Συνοδευτικά</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="recipe_diet">Ειδική διατροφή</label>
+				<select name="recipe_diet" id="recipe_diet">
+				  <option value="vegan">Βίγκαν</option>
+				  <option value="xortofagika">Χορτοφαγικά</option>
+				  <option value="non_dairy">Χωρίς γαλακτοκομικά</option>
+				  <option value="non_gluten">Χωρίς γλουτένη</option>
+				  <option value="no_sugar">Χωρίς ζάχαρη</option>
+				</select>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label 
+			  		for="recipe_time" 
+			  		style="display:inline-block; ">
+			  		Χρόνος
+			  	</label>
+			  	<input 
+					class="form-control" 
+					name="recipe_time" 
+					type="text"
+					style="width:90px; display:inline-block;
+					margin-bottom: 10px;" 
+					required>
+			</div>
+			
+
+
       		<div class="form-group" id="formIngredients">
 			  	
 			  	<label 

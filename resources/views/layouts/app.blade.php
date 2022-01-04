@@ -13,12 +13,21 @@
         <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+        
+        <!-- JQuery DataTable plugin -->
+        <script src="cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <link href="cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+        
+        <!-- custom script -->
+        <script src="{{ asset('js/script.min.js') }}" type="text/javascript" ></script>
+
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     </head>
     <body>
         <div id="app">
@@ -34,7 +43,8 @@
 
                         <ul class="nav navbar-nav me-auto">
                             <li class="nav-item ms-lg-1">
-                                <a class="nav-link  {{ (Route::getCurrentRoute()->uri == '/') ? 'text-warning bg-dark' : '' }}" href="{{ url('/') }}">  {{ 'Explore' }} </a>
+                                <a class="nav-link  {{ 
+                                    ((Route::getCurrentRoute()->uri == 'explore') || (Route::getCurrentRoute()->uri == '/')) ? 'text-warning bg-dark' : '' }}" href="{{ url('/explore') }}">  {{ 'Explore' }} </a>
                             </li>
                             <li class="nav-item ms-lg-1">
                                 <a class="nav-link  {{(Route::getCurrentRoute()->uri == 'dashboard') ? 'text-warning bg-dark' : '' }}" href="{{ url('/dashboard') }}"> {{ 'Dashboard' }} </a>
