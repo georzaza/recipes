@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ingredient;
-use App\Models\Recipe;
+use App\Models\{Ingredient, Recipe};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{DB, Auth};
 
@@ -40,16 +39,16 @@ class RecipeController extends Controller {
         $request->validate([
             'recipe_name'   => 'required', 
             'execution'     => 'required',
-            'recipe_time'   => 'required',
-            'recipe_diet'   => 'required'
+            'time'   => 'required',
+            'diet'   => 'required'
         ]);
         $recipe = new Recipe([
             'recipe_name'   => $request->get('recipe_name'),
             'execution'     => $request->get('execution'),
             'user_id'       => Auth::user()->id,
-            'recipe_time'   => $request->get('recipe_time'),
-            'recipe_diet'   => $request->get('recipe_diet'),
-            'recipe_type'   => $request->get('recipe_type')
+            'time'   => $request->get('time'),
+            'diet'   => $request->get('diet'),
+            'type'   => $request->get('type')
         ]);
         $recipe->save();
         
@@ -116,17 +115,17 @@ class RecipeController extends Controller {
         $request->validate([
             'recipe_name'   => 'required',
             'execution'     => 'required',
-            'recipe_time'   => 'required',
-            'recipe_diet'   => 'required'
+            'time'   => 'required',
+            'diet'   => 'required'
         ]);
 
         $recipe = Recipe::find($id);
         $recipe->recipe_name = $request->get('recipe_name');
         $recipe->execution   = $request->get('execution');
         $recipe->user_id     = Auth::user()->id;
-        $recipe->recipe_time = $request->get('recipe_time');
-        $recipe->recipe_diet = $request->get('recipe_diet');
-        $recipe->recipe_type = $request->get('recipe_type');
+        $recipe->time = $request->get('time');
+        $recipe->diet = $request->get('diet');
+        $recipe->type = $request->get('type');
         $recipe->save();
         
         // Delete all the ingredients the old recipe had.

@@ -33,7 +33,7 @@
 
 			<div class="form-group">
 				<label for="recipy_type">Είδος γεύματος</label>
-				<select name="recipe_type" id="recipe_type">
+				<select name="type" id="type">
 				  <option value="Γλυκό">Γλυκό</option>
 				  <option value="Κοκτέιλ">Κοκτέιλ</option>
 				  <option value="Κυρίως Γεύμα">Κυρίως Γεύμα</option>
@@ -47,8 +47,8 @@
 			</div>
 
 			<div class="form-group">
-				<label for="recipe_diet">Ειδική διατροφή</label>
-				<select name="recipe_diet" id="recipe_diet">
+				<label for="diet">Ειδική διατροφή</label>
+				<select name="diet" id="diet">
 				  <option value="Βίγκαν">Βίγκαν</option>
 				  <option value="Χορτοφαγικά">Χορτοφαγικά</option>
 				  <option value="Χωρίς γαλακτοκομικά">Χωρίς γαλακτοκομικά</option>
@@ -60,13 +60,13 @@
 
 			<div class="form-group">
 				<label 
-			  		for="recipe_time" 
+			  		for="time" 
 			  		style="display:inline-block; ">
 			  		Χρόνος
 			  	</label>
 			  	<input 
 					class="form-control" 
-					name="recipe_time" 
+					name="time" 
 					type="text"
 					style="width:90px; display:inline-block;
 					margin-bottom: 10px;" 

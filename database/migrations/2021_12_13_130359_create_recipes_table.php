@@ -24,9 +24,9 @@ class CreateRecipesTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             // on deleting  a user, delete all his recipes too.
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
-            $table->string('recipe_time');
-            $table->string('recipe_type');
-            $table->string('recipe_diet');
+            $table->string('time');
+            $table->string('type');
+            $table->string('diet');
             $table->string('recipe_name');
             $table->longText('execution');
             $table->timestamps();

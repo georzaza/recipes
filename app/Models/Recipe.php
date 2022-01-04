@@ -15,9 +15,9 @@ class Recipe extends Model
     protected $fillable = [
         'user_id',
         'recipe_name', 
-        'recipe_time',
-        'recipe_type',
-        'recipe_diet',
+        'time',
+        'type',
+        'diet',
         'execution'
     ];
 

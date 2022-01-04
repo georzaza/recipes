@@ -21,7 +21,6 @@ class Ingredient extends Model
     protected $fillable = [
         'ingredient_name', 
         'qty',
-        //'qty_units',
         'recipe_id',
     ];
 
