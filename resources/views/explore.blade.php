@@ -19,8 +19,12 @@
 					@foreach($recipes as $recipe)
 						<a href="{{ route('recipes.show',$recipe->id)}}"
 							style="text-align: center; text-decoration: none;color: purple;">
-							<b>{{$recipe->recipe_name }}</b><i> from <b>{{$recipe->name }}</b></i>
-						</a>
+							<b>{{$recipe->recipe_name }}</b>
+                        </a>
+                        <i> from </i>
+                        <a href="/recipes/user/{{ $recipe->user_id }}">
+                            <b>{{$recipe->name }}</b>
+                        </a>
 					@endforeach
 				</div>
 			</div>

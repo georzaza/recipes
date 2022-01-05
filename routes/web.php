@@ -37,6 +37,7 @@ Route::get('/results', function () {
     return view('results');
 });
 
+Route::get('/recipes/user/{id}', 'App\Http\Controllers\ExploreController@searchByUser');
 
 /** PRODUCTS **/
 Route::get('/products', 

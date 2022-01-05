@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\{Ingredient, Recipe, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 
 class ExploreController extends Controller
 {
@@ -23,6 +24,19 @@ class ExploreController extends Controller
             ->get();
 
             return view('explore')->with(['recipes' => $recipes]);
-        }
+        }        
+    }
+
+    public function searchByUser(Request $r) {
+        $recipes = Recipe::where('user_id', (explode("/", $r->path())[2]))->orderBy('recipe_name')->get();
+        
+        // get all recipe ids. We'll use them to get the ingredients.
+        $ids = [];
+        foreach ($recipes as $recipe)
+            array_push($ids, $recipe->id);
+
+        // get the ingredients
+        $ingredients = DB::table('ingredients')->whereIn('recipe_id', $ids)->get();
+        return view('user.recipes', ['ingredients' => $ingredients, 'recipes' => $recipes]);
     }
 }
