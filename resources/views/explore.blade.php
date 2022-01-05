@@ -2,14 +2,10 @@
 @section('content')
 
 <div class="container d-flex flex-col mt-2">
-	<!--style="border: 3px solid black; height: 500px;">-->
     <div class="card d-flex">
-    	<!--style="border: 3px solid green; height: 500px;">-->
     	<div class="card-header d-flex flex-column justify-content-start mt-1 text-center">
     		{{ __('Αναζήτηση Συνταγών Βάση Υλικών')}}
-    		<!--style="border: 3px solid red; height: max-content;">-->
 			<form action="{{ route('explore.search') }} " method="POST" class="mt-2">
-				<!--style="border: 3px solid yellow;">-->
 				@csrf
 				<div class="form-group d-flex justify-content-center">
 					<input type="text" id="search_term" name="search_term" placeholder="Αναζήτηση" style="height: 35px;">
@@ -18,20 +14,8 @@
 			</form>
 
 			@if (!empty($recipes))
-			<!-- Errors or short msgs from server are showed here 
-			<div class="d-flex " style="border: 1px solid red;">
-				<div class="row col-md-2 mb-4 text-center">
-					@if(session()->get('success'))
-					<div class="alert alert-success">
-						{{ session()->get('success') }} 
-					</div>
-					@endif
-				</div>
-			</div>
-		-->
-			<!--<div style="border: 3px solid blue;">-->
-			<div class="card-body d-flex flex-row"> <!-- style="border: 3px solid blue;">-->
-				<div class="mt-4 d-inline-flex flex-column alert alert-success text-danger"> <!--style="border: 3px solid purple;">-->
+			<div class="card-body d-flex flex-row">
+				<div class="mt-4 d-inline-flex flex-column alert alert-success text-danger">
 					@foreach($recipes as $recipe)
 						<a href="{{ route('recipes.show',$recipe->id)}}"
 							style="text-align: center; text-decoration: none;color: purple;">

@@ -24,6 +24,5 @@ class ExploreController extends Controller
 
             return view('explore')->with(['recipes' => $recipes]);
         }
-        
     }
 }
