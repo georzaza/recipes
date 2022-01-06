@@ -77,7 +77,7 @@ class RecipeController extends Controller {
             $ingredient->save();
             $counter++;
         }
-        return redirect('/recipes')->with('success', 'recipe saved!');
+        return redirect('/recipes')->with('success', 'Η συνταγή αποθηκεύτηκε επιτυχώς!');
     }
 
     
@@ -154,7 +154,7 @@ class RecipeController extends Controller {
             $ingredient->save();
             $counter++;
         }
-        return redirect('/recipes')->with('success', 'recipe updated!');
+        return redirect('/recipes')->with('success', 'Η συνταγή ενημερώθηκε επιτυχώς!');
     }
 
     
@@ -165,7 +165,7 @@ class RecipeController extends Controller {
         // all it's ingredients will be removed too. (onDelete('CASCADE'))
         $recipe = Recipe::find($id);
         $recipe->delete();
-        return redirect('/recipes')->with('success', 'recipe deleted!');
+        return redirect('/recipes')->with('success', 'Η συνταγή διεγράφη!');
     }
 
     // UNDER DEVELOPMENT

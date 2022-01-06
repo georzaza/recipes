@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-3">
             <div class="card">
-                <div class="card-header">{{ __('Status') }}</div>
+                <div class="card-header">{{ __('Κατάσταση') }}</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success text-center" role="alert">
@@ -13,33 +13,25 @@
                         </div>
                     @endif
                     <div class="alert alert-success text-center" role="alert">
-                        {{ __('You are logged in!') }}
+                        {{ __('Είσαι ενεργός!') }}
                     </div>
                 </div>
-                <!--
-                <div class="card-body">
-                    <button class="btn-primary">{{ __('Add a new Recipe') }} </button>
-                </div>
-                <div class="card-body">
-                    <button class="btn-primary">{{ __('Add a new Product') }} </button>
-                </div>
-                -->
             </div>
         </div>
         <div class="col-md-3">
             <div class="card d-flex justify-content-center">
-                <div class="card-header">{{ __('Recent Recipes?') }}</div>
+                <div class="card-header">{{ __('Πρόσφατες Συνταγές?') }}</div>
                 <div class="card-body d-flex row justify-content-center">
-                    <div class="alert alert-success text-danger text-center w-50" role="alert">
-                        {{ __('Show some recipes here') }}
+                    <div class="alert alert-success text-danger text-center w-75" role="alert">
+                        {{ __('Μερικές συνταγές εδώ?') }}
                     </div>
                 </div>
             </div>
             <div class="card d-flex justify-content-center mt-5">
-                <div class="card-header">{{ __('Recent Products?') }}</div>
+                <div class="card-header">{{ __('Πρόσφατα προϊόντα?') }}</div>
                 <div class="card-body d-flex row justify-content-center">
-                    <div class="alert alert-success text-danger text-center w-50" role="alert">
-                        {{ __('Show some products here') }}
+                    <div class="alert alert-success text-danger text-center w-75" role="alert">
+                        {{ __('Μερικά προϊόντα εδώ?') }}
                     </div>
                 </div>
             </div>

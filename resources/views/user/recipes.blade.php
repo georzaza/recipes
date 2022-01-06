@@ -4,18 +4,23 @@
 <!-- Errors or short msgs from server are showed here -->
 <div class="d-flex justify-content-center">
 	<div class="row col-md-2 mb-4 text-center">
-		@if(session()->get('success'))
-		<div class="alert alert-success">
-			{{ session()->get('success') }} 
+		@if(!empty($error))
+		<div class="alert alert-danger">
+			{{ $error }}
 		</div>
 		@endif
 	</div>
 </div>
 
-
+@if(empty($error))
 <div class="row d-flex justify-content-center">
 	<div class="col-sm-6">
+<<<<<<< Updated upstream
 		<input 	type="text" size="30" id="search_box" onkeyup="search_box()" placeholder="Search for recipes.."
+=======
+
+		<input 	type="text" size="30" id="search_box" onkeyup="search_box()" placeholder="Αναζήτηση.."
+>>>>>>> Stashed changes
 		style="border: 1px solid blue; color: purple; font-size: 13px; border-radius:20px; text-align: center;">
 
 		<div class="table-responsive">
@@ -24,40 +29,41 @@
 				
 				<thead class="text-center" >
 					<th class="text-center" scope="col">
-						<b>Name</b>
+						<b>Όνομα</b>
 						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_i_DfXCW6TIqhqYKDvOodMlmfBnO77TefTg&usqp=CAU" 
 						style="height: 10px; width:15px; display: inline;">
 					</th>
-					<th class="text-center" scope="col">Ingredients</th>					
+					<th class="text-center" scope="col">Συστατικά</th>
 				</thead>
 
-
 				<tbody id="recipes" class="text-center">
+					@if (!empty($recipes))
 					@foreach($recipes as $recipe)
 					<tr class="text-center">
 						<td class="text-center">
 							<a style="text-align: center;" href="{{ route('recipes.show',$recipe->id)}}">{{$recipe->recipe_name }}</a>
 						</td>
 						<td>
-							<input class="iButton" type="button" value="See Ingredients" style="{display:block;}">
+							<input class="iButton" type="button" value="Επέκταση" style="{display:block;}">
 							<div class="container" style="display:none;width:200px;height: auto;">
+								@if (!empty($ingredients))
 								@foreach($ingredients as $ingredient)
 								<?php 
 								if ($ingredient->recipe_id == $recipe->id)
 									echo '<li style="color: purple;">'.$ingredient->qty.' '.$ingredient->ingredient_name.'</li>';
 								?>
-								@endforeach	
+								@endforeach
+								@endif
 							</div>
 						</td>
 					</tr>
 					@endforeach
+					@endif
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
-
-
 
 
 
@@ -70,12 +76,9 @@
 		tbody = document.getElementById("recipes");
 		tr = tbody.getElementsByTagName('tr');
 		
-
-
 		for (i = 0; i < tr.length; i++) {
 			td = tr[i].getElementsByTagName("td")[0];
 			txtValue = td.textContent || td.innerText;
-
 			if (txtValue.toUpperCase().indexOf(filter) > -1 )
 				tr[i].style.display = "";
 			else
@@ -87,18 +90,23 @@
 <!-- Ingridients Button -->
 <script>
 	$('.iButton').click(function(){
-		if ( this.value === 'Hide Ingredients' ) {
+		if ( this.value === 'Απόκρυψη' ) {
 			open = false;
-			this.value = 'See Ingredients';
+			this.value = 'Επέκταση';
 			$(this).next("div.container").hide(4);
 		}
 		else {
 			open = true;
-			this.value = 'Hide Ingredients';
-			$(this).siblings("[value='Hide Ingredients']").click();
+			this.value = 'Απόκρυψη';
+			$(this).siblings("[value='Απόκρυψη']").click();
 			$(this).next("div.container").show(4);
 		}
 	});
 </script>
 
+<<<<<<< Updated upstream
 @endsection
+=======
+@endif
+@endsection
+>>>>>>> Stashed changes

@@ -46,7 +46,7 @@ class ProductController extends Controller {
             'details'       => $request->get('details')
         ]);
         $product->save();
-        return redirect('/products')->with('success', 'product saved!');
+        return redirect('/products')->with('success', 'Το προϊόν αποθηκεύτηκε επιτυχώς!');
     }
 
 

@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('content')
-
 
 <div class="row d-flex justify-content-center">	
 	<div class="col-sm-8">
@@ -35,17 +33,17 @@
 		@endif
 		
 		<div>
-			<h4 style="margin-top: 50px; text-align: center; color: purple;"><b>Ingredients:</b></h4>
+			<h4 style="margin-top: 50px; text-align: center; color: purple;"><b>Συστατικά:</b></h4>
 			<ul class="list-group">
 				@foreach ($ingredients as $ingredient)
 					<li style="text-align: center; margin-bottom: 5px;" class="list-group-item">
-						{{ $ingredient->ingredient_name }}: {{ $ingredient->qty}} Kg/L
+						{{ $ingredient->ingredient_name }}: {{ $ingredient->qty}}
 					</li>
 				@endforeach
 			</ul>
 		</div>
 		<div>
-			<h4 style="margin-top: 50px; text-align: center; color: purple;"><b>Execution</b></h4>
+			<h4 style="margin-top: 50px; text-align: center; color: purple;"><b>Εκτέλεση</b></h4>
 			<ul class=list-group>
 			<li style="text-align: center; margin-bottom: 45px;" class=list-group-item>{{ $recipe->execution }}</li>
 			</ul>

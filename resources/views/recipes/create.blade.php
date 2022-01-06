@@ -127,7 +127,7 @@
 					class="btn btn-danger"
 					onclick="removeUnusedIngredient(this.id)"
 					type="button" 
-					style="display: inline-block; margin-y: 10px;" 
+					style="display: inline-block;" 
 					 >-
 				</button>
       		</div>

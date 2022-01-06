@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 
 <div class="row d-flex justify-content-center">
@@ -77,7 +76,7 @@
 
 			<div class="form-group" id="formIngredients">
 			  	<label for="recipeIngredients0" style="width:290px; display:inline-block; ">Ingredients</label>
-      			<label for="recipeIngredientQty0" style="width:120px; display:inline-block; text-align: center;">Quantity (in kg/L)</label>
+      			<label for="recipeIngredientQty0" style="width:120px; display:inline-block; text-align: center;">Ποσότητα (βάρος)</label>
 				<?php $count=-1 ?>
 				@foreach ($ingredients as $ingredient)
 					<input 	value="{{$ingredient->ingredient_name}}" type="text" class="form-control" name="recipeIngredients<?php $count++; echo $count; ?>" style="width:290px; display:inline-block; margin-right: 15px; margin-bottom: 10px;">

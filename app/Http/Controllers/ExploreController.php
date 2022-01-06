@@ -28,15 +28,27 @@ class ExploreController extends Controller
     }
 
     public function searchByUser(Request $r) {
-        $recipes = Recipe::where('user_id', (explode("/", $r->path())[2]))->orderBy('recipe_name')->get();
-        
-        // get all recipe ids. We'll use them to get the ingredients.
+        $user_id = explode("/", $r->path())[2];
+        $user = User::find($user_id);
+        $username = NULL;
+
+        // if the user does not exist, just return empty results. 
+        // A 404 would be more appropriate.
+        if ($user != NULL)
+            $username = $user->name;
+        else {
+            return view('user.recipes')->with('error', 'Ο χρήστης δεν υπάρχει ή δεν έχει προσθέσει συνταγές ακόμη.');
+        }
+
+        $recipes = Recipe::where('user_id', $user_id)->orderBy('recipe_name')->get();
         $ids = [];
         foreach ($recipes as $recipe)
             array_push($ids, $recipe->id);
-
-        // get the ingredients
         $ingredients = DB::table('ingredients')->whereIn('recipe_id', $ids)->get();
-        return view('user.recipes', ['ingredients' => $ingredients, 'recipes' => $recipes]);
+        return view('user.recipes', [
+            'ingredients' => $ingredients, 
+            'recipes' => $recipes, 
+            'username' => $username
+        ]);
     }
 }
