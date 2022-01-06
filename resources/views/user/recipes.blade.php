@@ -15,10 +15,6 @@
 
 <div class="row d-flex justify-content-center">
 	<div class="col-sm-6">
-		<div class=m-8>
-			<a style="width: auto; margin-left:40%; " href="{{ route('recipes.create')}}" class="btn btn-success">Add New Recipe</a>  	
-		</div>
-
 		<input 	type="text" size="30" id="search_box" onkeyup="search_box()" placeholder="Search for recipes.."
 		style="border: 1px solid blue; color: purple; font-size: 13px; border-radius:20px; text-align: center;">
 
@@ -32,8 +28,7 @@
 						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_i_DfXCW6TIqhqYKDvOodMlmfBnO77TefTg&usqp=CAU" 
 						style="height: 10px; width:15px; display: inline;">
 					</th>
-					<th class="text-center" scope="col">Ingredients</th>
-					<th scope="col" colspan="2" style="text-align:center;"></th>
+					<th class="text-center" scope="col">Ingredients</th>					
 				</thead>
 
 
@@ -53,13 +48,6 @@
 								?>
 								@endforeach	
 							</div>
-						</td>
-						<td>
-							<a href="{{ route('recipes.edit',$recipe->id)}}" style="text-align: center;" class="btn btn-primary">Edit</a>
-						</td>
-						<td>
-							<a href="{{ route('recipes.destroy', $recipe->id) }}" class="btn btn-danger" style="text-align: center;">Delete</a>
-							</form>
 						</td>
 					</tr>
 					@endforeach
