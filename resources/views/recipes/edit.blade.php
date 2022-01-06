@@ -67,8 +67,10 @@
 			  	<input 
 					class="form-control" 
 					name="time" 
-					type="text"
-					style="width:90px; display:inline-block;
+					type="number"
+					min="1"
+					placeholder="Σε λεπτά" 
+					style="width:110px; display:inline-block;
 					margin-bottom: 10px;" 
 					required>
 			</div>
