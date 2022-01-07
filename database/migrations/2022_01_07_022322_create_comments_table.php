@@ -30,7 +30,6 @@ class CreateCommentsTable extends Migration
                 ->on('recipes')
                 ->onDelete('CASCADE');
 
-            $table->date('date');
             $table->string('comment'); //255 chars are ok for a comment.
             $table->timestamps();
         });

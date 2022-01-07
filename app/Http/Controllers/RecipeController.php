@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Ingredient, Recipe};
+use App\Models\{Ingredient, Recipe, Rating, Comment};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{DB, Auth};
 
@@ -46,10 +46,11 @@ class RecipeController extends Controller {
         $recipe = new Recipe([
             'recipe_name'   => $request->get('recipe_name'),
             'execution'     => $request->get('execution'),
+            'time'          => $request->get('time'),
+            'diet'          => $request->get('diet'),
+            'type'          => $request->get('type'),
             'user_id'       => Auth::user()->id,
-            'time'   => $request->get('time'),
-            'diet'   => $request->get('diet'),
-            'type'   => $request->get('type')
+            'rating'        => 0
         ]);
         $recipe->save();
         
@@ -100,8 +101,13 @@ class RecipeController extends Controller {
                     ->where('recipe_id', $recipe->id)
                     ->get();
         */
-        
-        return view('recipes.show', ['ingredients' => $ingredients, 'recipe' => $recipe]);
+        $comments = DB::table('comments')->where('recipe_id', $id)->orderBy('created_at')->get();
+
+        return view('recipes.show', [
+            'ingredients' => $ingredients,
+            'recipe' => $recipe,
+            'comments' => $comments
+        ]);
     }
 
     
@@ -124,10 +130,10 @@ class RecipeController extends Controller {
         $recipe = Recipe::find($id);
         $recipe->recipe_name = $request->get('recipe_name');
         $recipe->execution   = $request->get('execution');
+        $recipe->time        = $request->get('time');
+        $recipe->diet        = $request->get('diet');
+        $recipe->type        = $request->get('type');
         $recipe->user_id     = Auth::user()->id;
-        $recipe->time = $request->get('time');
-        $recipe->diet = $request->get('diet');
-        $recipe->type = $request->get('type');
         $recipe->save();
         
         // Delete all the ingredients the old recipe had.
@@ -159,7 +165,7 @@ class RecipeController extends Controller {
         return redirect('/recipes')->with('success', 'Η συνταγή ενημερώθηκε επιτυχώς!');
     }
 
-    
+
     public function destroy($id) {
         // deletes the recipe. 
         // In our migration file, we declare the 'recipe' foreign key
@@ -168,5 +174,80 @@ class RecipeController extends Controller {
         $recipe = Recipe::find($id);
         $recipe->delete();
         return redirect('/recipes')->with('success', 'Η συνταγή διεγράφη!');
+    }
+
+
+    public function rate(Request $r) {
+        if ($r->has('rating'))  {
+            $rating = $r->get('rating');
+            // return error if the user tried to post a non-acceptable rating value.
+            // not tested, but should work.
+            if ($rating<1 || $rating>5)
+                return back()->with(['error' => 'wrong rating']);
+            $user_id = Auth::user()->id;
+            $recipe_id = explode("/", $r->path())[2];
+            // get user's previous rating for this recipe
+            $previous_rating = DB::table('ratings')
+                ->where('user_id', $user_id)
+                ->where('recipe_id', $recipe_id)
+                ->get();
+            // if the user had already rated this recipe dont do anything.
+            if (!empty($previous_rating[0]))   {
+                return back()->with([
+                    'error' => 'Έχετε ήδη βαθμολογήσει αυτή τη συνταγή στο παρελθόν.'
+                ]);
+            }
+            // save the user's rating.
+            $new_rating = new Rating([
+                'user_id'   => $user_id,
+                'recipe_id' => $recipe_id,
+                'rating'    => $rating
+            ]);
+            $new_rating->save();
+            // update the recipe's total rating.
+            $recipe = Recipe::find($recipe_id);
+            $recipe->rating = DB::table('ratings')
+                ->select('rating')
+                ->where('recipe_id', $recipe_id)
+                ->avg('rating');
+            $recipe->save();            
+            return back()->with([
+                'success' => 'Επιτυχής βαθμολόγηση της συνταγής'
+            ]);
+        }
+        // in case where a post was made to this route without a rating value.
+        else 
+            return back()->with(['error' => 'Κάτι πήγε στραβά']);
+    }
+
+
+    public function comment(Request $r) {
+        if ($r->has('comment'))  {
+            $comment = $r->get('comment');
+            $user_id = Auth::user()->id;
+            $recipe_id = explode("/", $r->path())[2];
+            
+            // get user's previous rating for this recipe
+            $previous_comment = DB::table('comments')
+                ->where('user_id', $user_id)
+                ->where('recipe_id', $recipe_id)
+                ->get();
+            // if the user had already commented this recipe dont do anything.
+            if (!empty($previous_comment[0]))   {
+                return back()->with([
+                    'comment_error' => 'Έχετε ήδη υποβάλει κάποιο σχόλιο για αυτή τη συνταγή.'
+                ]);
+            }
+            // save the user's comment.
+            $new_comment = new Comment([
+                'user_id'   => $user_id,
+                'recipe_id' => $recipe_id,
+                'comment'    => $comment
+            ]);
+            $new_comment->save();
+            return back()->with(['comment_success' => 'Σχολιάσατε επιτυχώς αυτή τη συνταγή']);
+        }
+        else 
+            return back()->with(['comment_error' => 'Κάτι πήγε στραβά']);
     }
 }

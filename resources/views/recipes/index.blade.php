@@ -47,7 +47,11 @@
 							<a style="text-align: center;" href="{{ route('recipes.show',$recipe->id)}}">{{$recipe->recipe_name }}</a>
 						</td>
 						<td class="text-center">
-							{{4}}/5
+							@if ($recipe->rating>0)
+								{{$recipe->rating}}/5
+							@else
+								-
+							@endif
 						</td>
 						<td>
 							<input class="iButton" type="button" value="Επέκταση" style="{display:block;}"

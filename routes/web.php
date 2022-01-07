@@ -79,6 +79,14 @@ Route::get('/recipes/show/{id}',
     'App\Http\Controllers\RecipeController@show')
     ->name('recipes.show');
 
+Route::post('/recipes/show/{id}/rate',
+    'App\Http\Controllers\RecipeController@rate')
+    ->name('recipes.rate');
+
+Route::post('/recipes/show/{id}/comment',
+    'App\Http\Controllers\RecipeController@comment')
+    ->name('recipes.comment');
+
 Route::get('/recipes/edit/{id}', 
     'App\Http\Controllers\RecipeController@edit')
     ->name('recipes.edit');

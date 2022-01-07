@@ -12,11 +12,6 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-        
-        <!-- JQuery DataTable plugin -->
-        <script src="cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-        <link href="cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
         
         <!-- custom script -->
         <script src="{{ asset('js/script.min.js') }}" type="text/javascript" ></script>

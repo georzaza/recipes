@@ -14,6 +14,7 @@ class Recipe extends Model
     protected $guarded = ['id'];
     protected $fillable = [
         'user_id',
+        'rating',
         'recipe_name', 
         'time',
         'type',

@@ -30,7 +30,6 @@ class CreateProductsTable extends Migration
             $table->string('qty');
             $table->string('weight')->nullable();
             $table->string('details')->nullable();
-        
         });
     }
 
