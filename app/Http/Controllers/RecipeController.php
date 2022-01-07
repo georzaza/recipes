@@ -39,8 +39,9 @@ class RecipeController extends Controller {
         $request->validate([
             'recipe_name'   => 'required', 
             'execution'     => 'required',
-            'time'   => 'required',
+            'time'   => 'required|integer',
             'diet'   => 'required'
+            //todo should also validate type
         ]);
         $recipe = new Recipe([
             'recipe_name'   => $request->get('recipe_name'),
@@ -115,8 +116,9 @@ class RecipeController extends Controller {
         $request->validate([
             'recipe_name'   => 'required',
             'execution'     => 'required',
-            'time'   => 'required',
+            'time'   => 'required|integer',
             'diet'   => 'required'
+            //todo should also validate type
         ]);
 
         $recipe = Recipe::find($id);
@@ -166,19 +168,5 @@ class RecipeController extends Controller {
         $recipe = Recipe::find($id);
         $recipe->delete();
         return redirect('/recipes')->with('success', 'Η συνταγή διεγράφη!');
-    }
-
-    // UNDER DEVELOPMENT
-    public function find(Request $request) {
-        $temp = $request->get('ingredient');
-        
-        $results = DB::table('ingredients')
-            ->where('ingredient_name', 'like', '%'.$temp.'%')
-            ->select('recipe_id')
-            ->join('recipes','recipes.id','recipe_id')
-            ->distinct()
-            ->get();
-
-        return redirect('/recipes', ['recipes' => $results]);
     }
 }

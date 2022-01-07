@@ -26,13 +26,13 @@
 			<!-- Search Products -->
 			<input type="text" id="search_box" onkeyup="search_box()" placeholder="Αναζήτηση προϊόντος..">
 
-			<!-- Search Recipes For Some Product-->
-			<form action="{{ route('recipes.find') }}" method="get">
+			{{-- <!-- Search Recipes For Some Product. Not used anymore.--> 
+			<form action="{{ route('recipes.search') }}" method="get">
 				<div class="form-group d-flex justify-content-center">
 					<input type="text" id="ingredient" name="ingredient" placeholder="Βρες συνταγές με..." style="height: 35px;">
 					<button type="submit" class="btn btn-success">Αναζήτηση</button>
 				</div>
-			</form>
+			</form> --}}
 		</div>
 
 		<!-- Main Content -->

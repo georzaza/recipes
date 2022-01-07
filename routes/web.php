@@ -13,16 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('explore');
-});
 
 Auth::routes();
 
+/** todo incomplete
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::get('/home', function () { return redirect('/dashboard'); });
+*/
 
-Route::get('/home', function () {
-    return redirect('/dashboard');
+/** guest views **/
+Route::get('/', function () {
+    return view('explore');
 });
 
 Route::get('/explore', function () {
@@ -32,10 +33,6 @@ Route::get('/explore', function () {
 Route::post('/explore',
     'App\Http\Controllers\ExploreController@search')
     ->name('explore.search');
-
-Route::get('/results', function () {
-    return view('results');
-});
 
 Route::get('/recipes/user/{id}', 'App\Http\Controllers\ExploreController@searchByUser');
 
@@ -97,16 +94,3 @@ Route::get('/recipes/update/{id}',
 Route::get('/recipes/destroy/{id}', 
     'App\Http\Controllers\RecipeController@destroy')
     ->name('recipes.destroy');
-
-Route::get('/recipes/find',
-    'App\Http\Controllers\RecipeController@find')
-    ->name('recipes.find');
-
-
-/** others that need work **/
-Route::get('questions', function () {
-        return view('Questions.first');
-    }); 
-
-Route::resource('available-recipes-with', 
-    'App\Http\Controllers\QuestionController');

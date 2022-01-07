@@ -34,6 +34,7 @@
 						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_i_DfXCW6TIqhqYKDvOodMlmfBnO77TefTg&usqp=CAU" 
 						style="height: 10px; width:15px; display: inline;">
 					</th>
+					<th class="text-center" scope="col">Βαθμολογία</th>
 					<th class="text-center" scope="col">Συστατικά</th>
 					<th scope="col" colspan="2" style="text-align:center;"></th>
 				</thead>
@@ -44,6 +45,9 @@
 					<tr class="text-center">
 						<td class="text-center">
 							<a style="text-align: center;" href="{{ route('recipes.show',$recipe->id)}}">{{$recipe->recipe_name }}</a>
+						</td>
+						<td class="text-center">
+							{{4}}/5
 						</td>
 						<td>
 							<input class="iButton" type="button" value="Επέκταση" style="{display:block;}"

@@ -12,21 +12,17 @@
 	</div>
 </div>
 
+
 @if(empty($error))
 <div class="row d-flex justify-content-center">
 	<div class="col-sm-6">
-<<<<<<< Updated upstream
-		<input 	type="text" size="30" id="search_box" onkeyup="search_box()" placeholder="Search for recipes.."
-=======
+		<h4 class="mb-4 mt-4 text-center">Συνταγές του χρήστη <b>{{ $username }}</b></h4>
 
 		<input 	type="text" size="30" id="search_box" onkeyup="search_box()" placeholder="Αναζήτηση.."
->>>>>>> Stashed changes
 		style="border: 1px solid blue; color: purple; font-size: 13px; border-radius:20px; text-align: center;">
 
 		<div class="table-responsive">
-			
 			<table class="table table-striped table-hover text-center table-bordered" id="recipes_table">
-				
 				<thead class="text-center" >
 					<th class="text-center" scope="col">
 						<b>Όνομα</b>
@@ -48,10 +44,10 @@
 							<div class="container" style="display:none;width:200px;height: auto;">
 								@if (!empty($ingredients))
 								@foreach($ingredients as $ingredient)
-								<?php 
+								@php
 								if ($ingredient->recipe_id == $recipe->id)
 									echo '<li style="color: purple;">'.$ingredient->qty.' '.$ingredient->ingredient_name.'</li>';
-								?>
+								@endphp
 								@endforeach
 								@endif
 							</div>
@@ -104,9 +100,6 @@
 	});
 </script>
 
-<<<<<<< Updated upstream
-@endsection
-=======
+
 @endif
 @endsection
->>>>>>> Stashed changes
