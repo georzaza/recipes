@@ -12,7 +12,6 @@ All work has been made manually, except for the users login/register functionali
 
 <hr>
  
-<br>
 
 ### How to Run
 
