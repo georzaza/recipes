@@ -18,15 +18,10 @@ All work has been made manually, except for the users login/register functionali
 
 - 1. Install composer globally. (sudo apt install composer)
 
-<hr> 
-
 - 2. Go into the folder of the project and run
 ```
 composer install
 ```
-
-<hr>
-
 - 3. MySQL should be running on the system. Run these mysql commands or	modify the `.env` file and the below commands accordingly. 
 ```
 create database store;
@@ -34,9 +29,6 @@ create user store_admin@localhost identified by 'Zaq!1qaZ';
 grant all privileges on store.* to store_admin@localhost;
 flush privileges;
 ```
-
-<hr>
-
 - 4. Back into the project folder, run those: 
 ```
 // maybe not needed
@@ -56,6 +48,5 @@ which in turn is a symbolic link to the file 'export_data/exported_data.sql'
 which contains mysql commands to populate the database. 
 This file was contructed by using the 'mysqldump' command and a python script.
 
-<hr>
 
 - 5. Finally Visit localhost:8000 On Your Browser.
