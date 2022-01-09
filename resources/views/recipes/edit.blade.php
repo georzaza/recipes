@@ -33,26 +33,27 @@
 			<div class="form-group">
 				<label for="recipy_type">Είδος γεύματος</label>
 				<select name="type" id="type">
-				  <option value="Γλυκό">Γλυκό</option>
-				  <option value="Κοκτέιλ">Κοκτέιλ</option>
-				  <option value="Κυρίως Γεύμα">Κυρίως Γεύμα</option>
-				  <option value="Ορεκτικό">Ορεκτικό</option>
-				  <option value="Πρωινό">Πρωινό</option>
-				  <option value="Ροφήματα">Ροφήματα</option>
-				  <option value="Σαλάτα">Σαλάτα</option>
-				  <option value="Σνακ">Σνακ</option>
-				  <option value="Συνοδευτικά">Συνοδευτικά</option>
+					<option value="Γλυκό">Γλυκό</option>
+					<option value="Κοκτέιλ">Κοκτέιλ</option>
+					<option value="Κυρίως Γεύμα">Κυρίως Γεύμα</option>
+					<option value="Ορεκτικό">Ορεκτικό</option>
+					<option value="Πρωινό">Πρωινό</option>
+					<option value="Ροφήματα">Ροφήματα</option>
+					<option value="Σαλάτα">Σαλάτα</option>
+					<option value="Σνακ">Σνακ</option>
+					<option value="Συνοδευτικά">Συνοδευτικά</option>
 				</select>
 			</div>
 
 			<div class="form-group">
 				<label for="diet">Ειδική διατροφή</label>
 				<select name="diet" id="diet">
-				  <option value="Βίγκαν">Βίγκαν</option>
-				  <option value="Χορτοφαγικά">Χορτοφαγικά</option>
-				  <option value="Χωρίς γαλακτοκομικά">Χωρίς γαλακτοκομικά</option>
-				  <option value="Χωρίς γλουτένη">Χωρίς γλουτένη</option>
-				  <option value="Χωρίς ζάχαρη">Χωρίς ζάχαρη</option>
+					<option value="Βίγκαν">Όχι</option>
+					<option value="Βίγκαν">Βίγκαν</option>
+					<option value="Χορτοφαγικά">Χορτοφαγικά</option>
+					<option value="Χωρίς γαλακτοκομικά">Χωρίς γαλακτοκομικά</option>
+					<option value="Χωρίς γλουτένη">Χωρίς γλουτένη</option>
+					<option value="Χωρίς ζάχαρη">Χωρίς ζάχαρη</option>
 				</select>
 			</div>
 			<br>

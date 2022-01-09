@@ -1,27 +1,43 @@
-## todo 
-- only show to each user the recipe that he owns.
-- update products/ingredients, maybe only keep ingredients?
-- add user_id on products/ingredients table(s).
-- add categories table (meat, etc)
-- add functionality for "search for recipes with X ingredient."
-  The frontend for the search bar is already there, what is missing
-  is a controller (function or a new controller) and a view to diplay 
-  the results. We could delete this frontend and instead create something
-  in the layouts.app so that it is available on all pages (something like a sidebar).
+- 1. Install composer globally. (sudo apt install composer)
 
+<hr> 
 
+- 2. Go into the folder of the project and run
+```
+composer install
+```
 
-## Updates: 
+<hr>
 
-- added some users to the db
+- 3. MySQL should be running on the system. Run these mysql commands or	modify the `.env` file and the below commands accordingly. 
+```
+create database store;
+create user store_admin@localhost identified by 'Zaq!1qaZ';
+grant all privileges on store.* to store_admin@localhost;
+flush privileges;
+```
 
-- added foreign key user_id on recipes.
+<hr>
 
-- modified db to be compatible with the changes
+- 4. Back into the project folder, run those: 
+```
+// maybe not needed
+php artisan key:generate
 
-- added `export_data` folder
+// creates the database tables. Migrations are under 'database/migrations'
+php artisan migrate:fresh
 
-- The file 'data' is a soft link to the most recent file in 
-`export_data/` folder that contains declarations to populate 
-the database. Everything in the `export_data` folder is 
-there just to create these kinds of declarations.
+php artisan db:seed
+php artisan serve
+```
+
+The command `php artisan db:seed` seeds the database tables.
+Uses 'database/seeders/DatabaseSeeder.php' which in turn calls 
+'database/seeders/GeneralSeeder.php' which in turn uses 'data' file 
+which in turn is a symbolic link to the file 'export_data/exported_data.sql'
+which contains mysql commands to populate the database. 
+This file was contructed by using the 'mysqldump' command and a python script.
+
+<hr>
+
+- 5. Finally Visit localhost:8000 On Your Browser.

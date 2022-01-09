@@ -35,7 +35,7 @@ class ExploreController extends Controller
             $eidos_diatrofis = $request->get('eidos_diatrofis');
             $eidos_geumatos = $request->get('eidos_geumatos');
             $recipes = Recipe::whereIn('diet', $eidos_diatrofis)
-                ->orWhereIn('type', $eidos_geumatos)
+                ->whereIn('type', $eidos_geumatos)
                 ->select('recipes.id', 'recipe_name', 'user_id', 'users.name', 'recipes.created_at')
                 ->join('users', 'users.id', 'recipes.user_id')
                 ->orderBy('created_at')
