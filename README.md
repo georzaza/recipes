@@ -1,3 +1,21 @@
+### What is this project? 
+
+A simple recipes site made in Laravel on the fly.
+
+Functionalities implemented in this project:
+- user login/register
+- adding new recipes to your account.
+- exploring recipes from other users based on some criteria
+- rating & commenting on recipes.
+
+All work has been made manually, except for the users login/register functionality. 
+
+<hr>
+ 
+<br>
+
+### How to Run
+
 - 1. Install composer globally. (sudo apt install composer)
 
 <hr> 
