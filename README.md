@@ -11,7 +11,6 @@ Functionalities implemented in this project:
 All work has been made manually, except for the users login/register functionality. 
 
 <hr>
- 
 
 ### How to Run
 
