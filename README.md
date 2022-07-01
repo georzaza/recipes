@@ -17,9 +17,9 @@ All work has been made manually, except for the users login/register functionali
 - 1. Install composer globally. (sudo apt install composer)
 
 - 2. Go into the folder of the project and run
-```
-composer install
-```
+    ```
+    composer install
+    ```
 - 3. MySQL should be running on the system. Run these mysql commands or	modify the `.env` file and the below commands accordingly. 
 ```
 create database store;
