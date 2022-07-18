@@ -29,7 +29,6 @@ All work has been made manually, except for the users login/register functionali
     ```
 - 4. Back into the project folder, run those: 
     ```
-    // maybe not needed
     php artisan key:generate
 
     // creates the database tables. Migrations are under 'database/migrations'
